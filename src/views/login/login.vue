@@ -65,7 +65,7 @@ export default {
 	data() {
 		return {
 			isReg:false,
-			msg:[],
+			msg:[{}],
 			errFrom:{
 				account:false,
 				accountmsg:'',
