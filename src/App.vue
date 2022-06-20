@@ -30,6 +30,7 @@ export default {
 </style>
 
 <style>
+@import '@/assets/iconfont/iconfont.css';
 	body,html,#app{
 		width: 100%;
 		height: 100%;

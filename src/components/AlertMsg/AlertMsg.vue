@@ -1,6 +1,14 @@
 <template>
     <div class="alert-box">
-        <div v-for="(item,key) in msg" :key="key" class="alert-msg">{{item.msg}}</div>
+        <div v-for="(item,key) in msg" :key="key" :class="[item.ava==true ? 'anima-out':'anima-in',item.info==1 ? 'alert-msg-success':item.info==2 ? 'alert-msg-error':'alert-msg-waring']">
+            <div :style="item.info==1 ? 'background-color:#67c23a;':item.info==2 ? 'background-color:#f56c6c;':'background-color:#e6a32c;'" class="alert-line-cake"></div>
+            <div class="alert-left-box">
+                <span v-if="item.info == 1" class="iconfont icon-lijiqueren col-15"></span>
+                <span v-else-if="item.info == 2" class="iconfont icon-cuowu col-15"></span>
+                <span v-else class="iconfont icon-cs-jg-1 col-15"></span>
+                {{item.msg}}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -13,7 +21,7 @@ export default {
     },
     setup(props) {
         let isTimeUp = false
-         let timetick = null
+        let timetick = null
         watch(props.msg,
             (newVal, oldVal) => {
                 if(isTimeUp == false){
@@ -21,15 +29,18 @@ export default {
                     timetick = window.setInterval(
                     function(){
                         let lenTemp = props.msg.length
-                        if(lenTemp == 1){
-                            window.clearInterval(timetick)
-                        }
-                        if(lenTemp > 0){
-                            props.msg.length = lenTemp - 1
-                        }else{
-                            window.clearInterval(timetick)
-                        }
-                    },1000
+                        props.msg[lenTemp-1].ava = true
+                        setTimeout(function(){
+                            if(lenTemp == 1){
+                                window.clearInterval(timetick)
+                            }
+                            if(lenTemp > 0){
+                                props.msg.length = lenTemp -1
+                            }else{
+                                window.clearInterval(timetick)
+                            }
+                        }, 100 )
+                    },2000
                     )
                 }
 
@@ -54,22 +65,94 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 1s;
 }
-.alert-msg{
+.alert-msg-success{
     width: auto;
-    height: 40px;
     min-width: 300px;
     background-color: #f0f9eb;
     border: 1px #e1f3e8 solid;
     color: #67c23a;
     border-radius: 4px;
-    transition: opacity .2s;
     overflow: hidden;
     opacity: 1;
     display: flex;
-    box-sizing: border-box;
-    flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
+    padding: 10px;
+}
+.alert-msg-error{
+    width: auto;
+    min-width: 300px;
+    background-color: #fef0f0;
+    border: 1px #fde2e2 solid;
+    color: #f56c6c;
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.alert-msg-waring{
+    width: auto;
+    min-width: 300px;
+    background-color: #fdf6ec;
+    border: 1px #faecd8 solid;
+    color: #e6a32c;
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.col-15{
+    margin-right: 5px;
+}
+
+.anima-in{
+    animation: openDiv 0.2s ease-in;
+}
+.anima-out{
+    animation: disDiv 0.2s ease-out;
+}
+
+@keyframes disDiv {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100%)
+    }
+}
+@keyframes openDiv {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+.alert-line-cake{
+    position: absolute;
+    width: 5px;
+    height: 43px;
+    margin-left: -11px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.alert-left-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 </style>

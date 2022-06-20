@@ -78,10 +78,12 @@ h1{
     top:0;
     right: 0;
     padding: 10px 0;
-    font-size: 16px;
-    color: #dd2020;
+    font-size: 10px;
+    color: #fba160;
     pointer-events: none;
     transition: .5s;
+    display: flex;
+    align-items: center;
 }
 
 .login-box-inner .user-box input:focus ~ label,
@@ -140,4 +142,9 @@ h1{
 @-webkit-keyframes openDiv{
     0%{-webkit-transform:rotateY(0deg);opacity: 0;}
     100%{-webkit-transform:rotateY(180deg);opacity: 1;}
-  }
+}
+
+.col-ri-5{
+    margin-right: 5px;
+    font-size: 10px;
+}
