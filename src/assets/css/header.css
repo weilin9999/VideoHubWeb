@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header-box{
+    width: 100%;
+    height: 65px;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0 3px 12px rgb(0 36 153 / 6%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-inner-box{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-img{
+    height: 60px;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+.logo-img img{
+    width: 70px;
+    height: 40px;
+}
+.logo-img .logo-name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.logo-name .name-bule{
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #03A9F4;
+    color: #fff;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.name-bule span{
+    padding: 6px 1px 0;
+}
+.logo-name .name-ye{
+    color: #03A9F4;
+}
+.name-ye-ye{
+    color: #03A9F4;
+    margin-left: 10px;
+}
+.username{
+    text-align: center;
+    padding: 20px 0;
+}
+
+.user-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    background-color: transparent;
+    margin-bottom: 2px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #61666D;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color .3s;
+    user-select: none;
+}
+.user-btn:hover{
+    background-color: #E3E5E7;
+}
+.user-btn .user-btn-inner{
+    display: flex;
+    align-items: center;
+}
+.col-right-6{
+    margin-right: 16px;
+}

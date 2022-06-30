@@ -4,6 +4,7 @@
 	user-select: none;
 }
 .main-login-box{
+    position: absolute;
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -24,7 +25,7 @@ h1{
 }
 
 .login-box{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255,255,255, 0.5);
     width: 400px;
     height: 500px;
     border-radius: 18px;
@@ -79,7 +80,7 @@ h1{
     right: 0;
     padding: 10px 0;
     font-size: 10px;
-    color: #fba160;
+    color: #F2B988;
     pointer-events: none;
     transition: .5s;
     display: flex;
@@ -90,7 +91,7 @@ h1{
 .login-box-inner .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #ff9f7b;
+    color: #F2B988;
     font-size: 12px;
 }
 
@@ -106,7 +107,7 @@ h1{
 
 .login-btn {
     color: #fff;
-    background-color: #409eff;
+    background-color: #2D55A6;
     border-color: #409eff;
     line-height: 1;
     white-space: nowrap;
@@ -122,7 +123,7 @@ h1{
     height: 50px;
 }
 .login-btn:hover{
-    background: #66b1ff;
+    background: #1A3873;
     border-color: #66b1ff;
     color: #fff;
 }

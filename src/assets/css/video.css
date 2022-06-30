@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-box{
+    position: absolute;
+    width: 100%;
+    min-width: 1670px;
+    min-height: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f6f7f8;
+}
+.video-box{
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    height: calc(100% - 95px);
+    padding: 30px 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.video{
+    width: 80%;
+    height: 85%;
+    background-color: #000;
+}
+
+.video-info{
+    width: 80%;
+    height: 65px;
+    background-color: #fff;
+    border-radius: 8px;
+    user-select: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.video-title{
+    width: fit-content;
+    max-width: 1000px;
+    font-size: 20px;
+}
+.hidde-tex{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+}
+.video-title:hover{
+    animation: showDropUp .5s;
+    animation-fill-mode: forwards;
+    overflow-y: auto;
+}
+
+@keyframes showDropUp{
+	0%{
+		transform:translateY(-5px);
+        height: 25px;
+	}
+	100%{
+		transform:translateY(0px);
+        height: 50px;
+	}
+}
+
+.collect{
+    margin-left: 30px;
+    width: 32px;
+    height: 50px;
+    cursor: pointer;
+    color: #ccc;
+}
+.collect::before{
+    font-size: 32px;
+}
+.collect:hover{
+    color: #FF9900;
+}
+
+.iscollect{
+    margin-left: 30px;
+    width: 45px;
+    height: 50px;
+    cursor: pointer;
+    color: #FF9900;
+}
+.iscollect::before{
+    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.iscollect p{
+    position: absolute;
+    display: flex;
+    width: 52px;
+}
