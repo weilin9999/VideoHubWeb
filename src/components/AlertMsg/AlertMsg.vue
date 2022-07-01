@@ -13,54 +13,62 @@
 </template>
 
 <script>
-import { watch } from 'vue';
 export default {
     name: "AlertMsg",
-    props: {
-        msg: Array,
+    data(){
+		return {
+			msg:[],
+            isTimeUp :false,
+            timetick : null
+		}
     },
-    setup(props) {
-        let isTimeUp = false
-        let timetick = null
-        watch(props.msg,
-            (newVal, oldVal) => {
-                if(isTimeUp == false){
-                    isTimeUp = true
-                    timetick = window.setInterval(
-                    function(){
-                        let lenTemp = props.msg.length
-                        props.msg[lenTemp-1].ava = true
-                        setTimeout(function(){
-                            if(lenTemp == 1){
-                                window.clearInterval(timetick)
-                            }
-                            if(lenTemp > 0){
-                                props.msg.length = lenTemp -1
-                            }else{
-                                window.clearInterval(timetick)
-                            }
-                        }, 100 )
-                    },2000
-                    )
-                }
-
-                if(props.msg.length == 0){
-                    window.clearInterval(timetick)
-                    timetick = null
-                    isTimeUp = false
-                }
-                
+    methods:{
+		addMsg(info,msg){
+			let temp = {info:info,msg:msg,ava:false}
+			this.msg.unshift(temp)
+            this.timeDelMsg()
+		},
+        timeDelMsg(){
+             if(this.isTimeUp == false){
+                this.isTimeUp = true
+                this.timetick = window.setInterval(
+                ()=>{
+                    let lenTemp = this.msg.length
+                    this.msg[lenTemp-1].ava = true
+                    // console.log(lenTemp)
+                    setTimeout(()=>{
+                        if(lenTemp >= 1){
+                            this.msg.pop()
+                        }
+                        // console.log(this.msg[lenTemp-2])
+                        if(this.msg[lenTemp-2]==undefined){
+                            this.isTimeUp = false
+                            window.clearInterval(this.timetick)
+                            window.clearInterval(this.timetick)
+                        }
+                    }, 100 )
+                },2000
+                )
             }
-        )
-    }
+
+            if(this.msg[0]==undefined){
+                window.clearInterval(this.timetick)
+                window.clearInterval(this.timetick)
+                this.timetick = null
+                this.isTimeUp = false
+            }
+        },
+	},
 }
 </script>
 
 <style scoped>
 .alert-box{
+    left: 0;
     width: 100%;
     height: auto;
     position: fixed;
+    z-index: 9000;
     top: 20px;
     display: flex;
     flex-direction: column;
