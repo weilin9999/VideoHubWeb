@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import '@/components/banner.js';
 import cookies from 'vue-cookies'
 export default {
 	name: 'App',

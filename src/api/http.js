@@ -12,9 +12,11 @@ const apiUrl = config.baseUrl.url // 使用到代理
 axios.defaults.timeout = 120000 // 设置接口响应时间
 axios.defaults.baseURL = apiUrl // 这是调用数据接口,公共接口url+调用接口名
 
-const token = cookies.get('token');
+const origin = cookies.get('origin');
 // 增加token（先写了个固定的token，实际项目中应该是通过接口获取到token）
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+if(origin != null){
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + origin.token;
+}
 
 // 封装get请求
 export function get (url, params = {}) {
@@ -45,7 +47,7 @@ export function post (url, data = {}) {
     })
 }
 // 封装upload请求
-export function upload (url, data = new FormData) {
+export function upload (url, data) {
     return new Promise((resolve, reject) => {
         axios.post(url, data,{ headers:{'Content-Type' : 'multipart/form-data'} }).then(
         response => {
